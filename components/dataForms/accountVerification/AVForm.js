@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { downloadFormDataToTxt } from "../../utils/helpers";
+import {saveFormDataToTxt} from "../../utils/helpers";
 import FormFieldsAV from "./FormFieldsAV";
+import directoriesNames from "../../../constants/directoriesNames";
 
 export default function AVForm() {
   const [formData, setFormData] = useState({
@@ -30,9 +31,9 @@ export default function AVForm() {
   };
 
   const downloadData = () => {
-    downloadFormDataToTxt({
+    saveFormDataToTxt({
       formData: { ...formData },
-      fileName,
+      fileName: `${directoriesNames.ACCOUNT_VERIFICATION}/${fileName}`
     });
   };
 
@@ -54,7 +55,7 @@ export default function AVForm() {
             type="button"
             onClick={downloadData}
           >
-            Download
+            Run
           </button>
         </div>
       </div>

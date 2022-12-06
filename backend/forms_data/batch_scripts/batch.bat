@@ -1,1 +1,1 @@
-echo "Hello from bash.bat"
+echo "Batch Script Ran: Hello from bash.bat"

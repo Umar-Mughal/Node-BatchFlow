@@ -6,8 +6,7 @@ const formController = require('../http/controllers/forms/formController');
 const router = express.Router();
 
 router
-    .route('/credit_transfer')
-    // .get(formController.saveCreditForm)
+    .route('/save')
     .post(formController.saveCreditForm);
 
 module.exports = router;

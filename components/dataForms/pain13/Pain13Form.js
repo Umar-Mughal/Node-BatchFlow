@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { downloadFormDataToTxt } from "../../utils/helpers";
+import {saveFormDataToTxt} from "../../utils/helpers";
 import FormFieldsPain13 from "./FormFieldsPain13";
+import directoriesNames from "../../../constants/directoriesNames";
 
 export default function Pain13Form() {
   const [formData, setFormData] = useState({
@@ -28,9 +29,9 @@ export default function Pain13Form() {
   };
 
   const downloadData = () => {
-    downloadFormDataToTxt({
+    saveFormDataToTxt({
       formData: { ...formData },
-      fileName,
+      fileName: `${directoriesNames.PAIN13}/${fileName}`
     });
   };
 
@@ -52,7 +53,7 @@ export default function Pain13Form() {
             type="button"
             onClick={downloadData}
           >
-            Download
+            Run
           </button>
         </div>
       </div>

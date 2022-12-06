@@ -3,7 +3,7 @@ import FormFieldsColumn1 from "./FormFieldsColumn1";
 import FormFieldsColumn2 from "./FormFieldsColumn2";
 import FormFieldsColumn3 from "./FormFieldsColumn3";
 import { statusOptions } from "../../utils/creditTransferDownOptions";
-import { downloadFormDataToTxt, saveFormDataToTxt } from "../../utils/helpers";
+import { saveFormDataToTxt } from "../../utils/helpers";
 import directoriesNames from "../../../constants/directoriesNames";
 
 export default function CreditCardForm() {
