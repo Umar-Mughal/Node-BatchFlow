@@ -3,7 +3,8 @@ import FormFieldsColumn1 from "./FormFieldsColumn1";
 import FormFieldsColumn2 from "./FormFieldsColumn2";
 import FormFieldsColumn3 from "./FormFieldsColumn3";
 import { statusOptions } from "../../utils/creditTransferDownOptions";
-import { downloadFormDataToTxt } from "../../utils/helpers";
+import { downloadFormDataToTxt, saveFormDataToTxt } from "../../utils/helpers";
+import directoriesNames from "../../../constants/directoriesNames";
 
 export default function CreditCardForm() {
   const [formData, setFormData] = useState({
@@ -58,7 +59,7 @@ export default function CreditCardForm() {
     if (disableStatusCode()) {
       delete newFormData.statusCode;
     }
-    downloadFormDataToTxt({ formData: newFormData, fileName });
+    saveFormDataToTxt({ formData: newFormData, fileName: `${directoriesNames.CREDIT_CARD}/${fileName}` });
   };
 
   return (
@@ -93,7 +94,7 @@ export default function CreditCardForm() {
             type="button"
             onClick={downloadData}
           >
-            Download
+            Run
           </button>
         </div>
       </div>
