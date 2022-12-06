@@ -15,7 +15,6 @@ const saveCreditForm = async (req, res) => {
     fs.writeFile(filePath, formTxtData, (err) => {
       if (err) throw err;
       runBatchProcess();
-      console.log("Aaaah, file write is succesful")
       res.status(201).json({
         statusCode: 201,
         status: 'success'

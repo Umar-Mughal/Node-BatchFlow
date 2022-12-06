@@ -1,2 +1,0 @@
-env,bankType,debtorBankCode,debtorIBAN,creditorBankCode,creditorIBAN,count,status,statusCode
-sit,test,SASABB,SA0915000609128913370007,SAICBK,SA9345000000162106637001,1,RCVD,AC03

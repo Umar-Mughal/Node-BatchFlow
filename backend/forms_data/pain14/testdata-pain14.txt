@@ -1,2 +1,0 @@
-env,bankType,debtorBankCode,debtorIBAN,creditorBankCode,creditorIBAN,orgnlPmtInfId,count,status,statusCode
-preprod,test,SADEUT,SA0915000609128913370007,SANBOB,SA9345000000162106637001,20220605SADEUTDEUT6BNC010840267388,1,RCVD,AC03
