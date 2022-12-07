@@ -21,25 +21,6 @@ export default function CreditCardForm() {
     // column2
     statusTxt: "accepted",
     amount: "25",
-    ctgypurp: "DIVI",
-    ctname: "Saudi British Bank",
-    cdtracctname: "a",
-    ultmtDbtr_ctctdtls_nm: "Ibrahim Zein",
-    cdtr_ctctdtls_nm: "twentyfive",
-    rmtInf_ustrd: "a",
-    rmtInf_strd_addtlRmtInf: "a",
-    ultmtCdtr_ctname: "a",
-    // column3
-    ultmtDbtr_nm: "International Bank",
-    cdtr_adrline: "7277 King Fahad Road",
-    dbtr_adrline: "a",
-    ultmtcdtr_adrline: "7277 King Fahad Road",
-    ultmtdbtr_adrline: "a",
-    cdtr_strtnm: "street name cr",
-    dbtr_strtnm: "Street171",
-    ultmtcdtr_strtnm: "12R",
-    ultmrdbtr_strtnm: "Street171",
-    dbtr_name: "Internanional Bank",
   });
   const fileName = "testdata.txt";
   const handleOnChange = (e) => {
@@ -59,7 +40,7 @@ export default function CreditCardForm() {
     if (disableStatusCode()) {
       delete newFormData.statusCode;
     }
-    saveFormDataToTxt({ formData: newFormData, fileName: `${directoriesNames.CREDIT_CARD}/${fileName}` });
+    saveFormDataToTxt({ formData: newFormData, fileName: `${directoriesNames.CREDIT_TRANSFER}/${fileName}` });
   };
 
   return (
@@ -80,17 +61,11 @@ export default function CreditCardForm() {
               handleOnChange={handleOnChange}
             />
           </div>
-          <div className={`w-[25rem] pl-[3rem]`}>
-            <FormFieldsColumn3
-              formData={formData}
-              handleOnChange={handleOnChange}
-            />
-          </div>
         </div>
 
         <div className="flex items-center justify-center mt-10">
           <button
-            className="bg-[#559284] text-[1.4rem] hover:bg-[#3E8474] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-[#559284] text-[1.4rem] hover:bg-[#3E8474] text-white font-bold py-3 px-8 rounded focus:outline-none focus:shadow-outline"
             type="button"
             onClick={downloadData}
           >

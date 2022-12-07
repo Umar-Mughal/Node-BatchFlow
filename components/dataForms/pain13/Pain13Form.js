@@ -49,7 +49,7 @@ export default function Pain13Form() {
 
         <div className="flex items-center justify-center mt-10">
           <button
-            className="bg-[#559284] text-[1.4rem] hover:bg-[#3E8474] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-[#559284] text-[1.4rem] hover:bg-[#3E8474] text-white font-bold py-3 px-8 rounded focus:outline-none focus:shadow-outline"
             type="button"
             onClick={downloadData}
           >
