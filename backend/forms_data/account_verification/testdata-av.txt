@@ -1,0 +1,2 @@
+env,bankType,debtorBankCode,debtorIBAN,creditorBankCode,creditorIBAN,creditTransferCount,status,statusCode,prtry,prtry_id
+preprod,test,SANBOP,SA0915000609128913370007,SABSFR,SA416161FGH0032474004977611616,1,True,0000,NATID,1122334455667

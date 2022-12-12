@@ -1,0 +1,2 @@
+env,bankType,debtorBankCode,debtorIBAN,creditorBankCode,creditorIBAN,creditTransferCount,status,statusCode,statusTxt,amount
+preprod,test,SAINMA,SA0915000609128913370007,SANBOB,SA9345000000162106637001,1,ACTC,AC03,accepted,25
