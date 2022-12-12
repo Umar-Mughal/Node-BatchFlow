@@ -1,9 +1,16 @@
-import { useState } from "react";
-import {saveFormDataToTxt} from "../../../apis/formApi";
+import { useState, useEffect } from "react";
+import { saveFormDataToTxt } from "../../../apis/formApi";
 import FormFieldsPain14 from "./FormFieldsPain14";
 import directoriesNames from "../../../constants/directoriesNames";
+import ProgressBar from "react-bootstrap/ProgressBar";
+import io from "socket.io-client";
+import { SERVER_URL, SOCKET_URL } from "../../../configs/server";
+
+const socket = io(SOCKET_URL);
 
 export default function Pain14Form() {
+  const [Status, setStatus] = useState(0);
+  const [progress, setprogress] = useState(0);
   const [formData, setFormData] = useState({
     env: "preprod",
     bankType: "test",
@@ -32,9 +39,28 @@ export default function Pain14Form() {
   const downloadData = () => {
     saveFormDataToTxt({
       formData: { ...formData },
-      fileName: `${directoriesNames.PAIN14}/${fileName}`
+      fileName: `${directoriesNames.PAIN14}/${fileName}`,
+      emitType: "progress_pain14",
+      formName: "pain14",
     });
+    setprogress(0);
+    setStatus(1);
   };
+
+  useEffect(() => {
+    socket.on("progress_pain14", (e) => {
+      if (e >= 100) {
+        setprogress(100);
+        setTimeout(() => {
+          setStatus(2);
+        }, 500);
+      } else setprogress(e);
+    });
+
+    return () => {
+      socket.off("progress_pain14");
+    };
+  }, []);
 
   return (
     <div className={"flex justify-center items-center"}>
@@ -49,14 +75,46 @@ export default function Pain14Form() {
         </div>
 
         <div className="flex items-center justify-center mt-10">
-          <button
-            className="bg-[#559284] text-[1.4rem] hover:bg-[#3E8474] text-white font-bold py-3 px-8 rounded focus:outline-none focus:shadow-outline"
-            type="button"
-            onClick={downloadData}
-          >
-            Run
-          </button>
+          {Status == 1 ? (
+            <>
+              <div class="progress" style={{ width: "70%" }}>
+                <div
+                  class="progress-bar progress-bar-striped progress-bar-animated"
+                  role="progressbar"
+                  style={{ width: progress + "%", height: "15px" }}
+                >
+                  <p className="text-center  text-[1.4rem] text-white">
+                    {progress}%
+                  </p>
+                </div>
+              </div>
+            </>
+          ) : (
+            <button
+              className="bg-[#559284] text-[1.4rem] hover:bg-[#3E8474] text-white font-bold py-3 px-8 rounded focus:outline-none focus:shadow-outline"
+              type="button"
+              onClick={downloadData}
+            >
+              Run
+            </button>
+          )}
         </div>
+        {Status == 2 ? (
+          <>
+            <div className="flex items-center justify-center nter mt-10">
+              <a
+                className="bg-[#559284] text-[1.4rem] hover:bg-[#3E8474] text-white font-bold py-3 px-8 rounded focus:outline-none focus:shadow-outline ml-5"
+                type="button"
+                href={`${SERVER_URL}/forms/download/pain14/validation_result.txt`}
+                target="_blank"
+              >
+                Download Validation Results
+              </a>
+            </div>
+          </>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );

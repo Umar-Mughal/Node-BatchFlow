@@ -1,8 +1,9 @@
 import Layout from "../components/layout/Layout";
 import FormTabsContent from "../components/formsTabs/FormTabsContent";
 import FormTabs from "../components/formsTabs/FormTabs";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+//import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Home() {
   return (
