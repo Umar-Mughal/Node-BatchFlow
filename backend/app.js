@@ -24,10 +24,14 @@ app.use(cors());
 // Routes
 app.use("/api/v1/forms", formRouter);
 
+const options = {
+  usePolling: true
+}
+
 // credit_transfer
 let check_credit = false;
 chokidar
-  .watch(path.resolve("./backend/forms_data/credit_transfer/status.txt"))
+  .watch(path.resolve("./backend/forms_data/credit_transfer/status.txt"), options)
   .on("all", (event, p) => {
     if (check_credit) {
       let data = fs.readFileSync(
@@ -44,7 +48,7 @@ chokidar
 // account
 let check_account = false;
 chokidar
-  .watch(path.resolve("./backend/forms_data/account_verification/status.txt"))
+  .watch(path.resolve("./backend/forms_data/account_verification/status.txt"), options)
   .on("all", (event, p) => {
     if (check_account) {
       let data = fs.readFileSync(
@@ -61,7 +65,7 @@ chokidar
 // pain13
 let check_pain13 = false;
 chokidar
-  .watch(path.resolve("./backend/forms_data/pain13/status.txt"))
+  .watch(path.resolve("./backend/forms_data/pain13/status.txt"), options)
   .on("all", (event, p) => {
     if (check_pain13) {
       let data = fs.readFileSync(
@@ -78,7 +82,7 @@ chokidar
 // pain14
 let check_pain14 = false;
 chokidar
-  .watch(path.resolve("./backend/forms_data/pain14/status.txt"))
+  .watch(path.resolve("./backend/forms_data/pain14/status.txt"), options)
   .on("all", (event, p) => {
     if (check_pain14) {
       let data = fs.readFileSync(
