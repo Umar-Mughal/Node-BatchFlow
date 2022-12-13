@@ -1,5 +1,7 @@
 const express = require("express");
 const next = require("next");
+const http = require("http");
+const {Server} = require("socket.io");
 const dev = process.env.NODE_ENV !== "production";
 const nextApp = next({ dev });
 
@@ -9,8 +11,8 @@ nextApp
     const app = require("../app");
     const PORT = process.env.PORT || 3000;
     app.listen(PORT, (err) => {
-      if (err) throw err;
-      console.log(`Ready on http://localhost:${PORT}`);
+    if (err) throw err;
+    console.log(`Ready on http://localhost:${PORT}`);
     });
   })
   .catch((ex) => {

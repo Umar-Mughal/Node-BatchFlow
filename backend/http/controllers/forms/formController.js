@@ -31,6 +31,12 @@ const saveCreditForm = async (req, res) => {
             path.resolve(`./backend/forms_data/${formName}/status.txt`),
             "2"
           );
+          setTimeout(() => {
+            fs.writeFileSync(
+                path.resolve(`./backend/forms_data/${formName}/status.txt`),
+                "3"
+            );
+          }, 3000);
         }, 3000);
       }, 1000);
     } else runBatchProcess();
