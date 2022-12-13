@@ -13,6 +13,12 @@ const progressBarSocket = (io) => {
         pain13: false,
         pain14: false
     }
+    const progressFlags = {
+        credit_transfer: "progress_credit",
+        account_verification: "progress_account",
+        pain13: "progress_pain13",
+        pain14: "progress_pain14"
+    }
 
     const getStatus = (status) => {
         switch(status) {
@@ -37,7 +43,7 @@ const progressBarSocket = (io) => {
                         path.resolve(statusFilePath),
                         "utf-8"
                     );
-                    io.sockets.emit("progress_credit", getStatus(+data));
+                    io.sockets.emit(progressFlags[dirName], getStatus(+data));
                     if (data === '3') {
                         statusFlags[dirName] = false;
                     }
@@ -46,9 +52,10 @@ const progressBarSocket = (io) => {
     }
 
     checkFileChange('credit_transfer')
-    checkFileChange('account_verification')
     checkFileChange('pain13')
     checkFileChange('pain14')
+    checkFileChange('account_verification')
+
 
     io.on("connection", (socket) => {
         socket.on("progress_credit", () => {
