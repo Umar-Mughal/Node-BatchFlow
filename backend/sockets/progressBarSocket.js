@@ -2,7 +2,7 @@ const chokidar = require("chokidar");
 const path = require("path");
 const fs = require("fs");
 
-const runProgressBarSocket = (io) => {
+const progressBarSocket = (io) => {
     const options = {
         usePolling: true
     }
@@ -50,7 +50,6 @@ const runProgressBarSocket = (io) => {
     checkFileChange('pain13')
     checkFileChange('pain14')
 
-// sockets event
     io.on("connection", (socket) => {
         socket.on("progress_credit", () => {
             statusFlags.credit_transfer = true;
@@ -67,4 +66,4 @@ const runProgressBarSocket = (io) => {
     });
 }
 
-module.exports = runProgressBarSocket
+module.exports = progressBarSocket

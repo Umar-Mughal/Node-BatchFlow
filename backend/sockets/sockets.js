@@ -1,4 +1,4 @@
-const progressBarSocket = require('./progressBar')
+const progressBarSocket = require('./progressBarSocket')
 
 module.exports = {
     progressBarSocket

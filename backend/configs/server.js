@@ -1,7 +1,4 @@
-const express = require("express");
 const next = require("next");
-const http = require("http");
-const {Server} = require("socket.io");
 const dev = process.env.NODE_ENV !== "production";
 const nextApp = next({ dev });
 
