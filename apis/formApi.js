@@ -1,10 +1,10 @@
 import axios from "axios";
-import { SERVER_URL } from "../configs/server";
+import {SERVER_URL, SOCKET_URL} from "../configs/server";
 import { toast } from "react-toastify";
 
 import io from "socket.io-client";
 
-const socket = io("http://localhost:3000/");
+const socket = io(SOCKET_URL);
 
 export const saveFormDataToTxt = async ({
   formData,
